@@ -54,5 +54,24 @@ public class PlatformUtil {
     }
     propertyService.markSold(propertyId, user.getName());
   }
+
+  public void getShortlistedProperty() {
+    User user = userService.getCurrentUser();
+    if (user == null) {
+      System.out.println("You must be logged in to view shortlisted properties.");
+      return;
+    }
+
+    propertyService.getShortlist(user);
+  }
+  public void shortListProperty(int propertyId) {
+    User user = userService.getCurrentUser();
+    if (user == null) {
+      System.out.println("You must be logged in to shortlist properties.");
+      return;
+    }
+
+    userService.shortlist(user, propertyId);
+  }
 }
 

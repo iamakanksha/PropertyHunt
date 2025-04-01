@@ -3,6 +3,8 @@ package propertyhunt.services;
 import propertyhunt.models.User;
 import propertyhunt.repositories.UserRepository;
 
+import java.util.Set;
+
 public class UserService {
   private UserRepository userRepository = UserRepository.getInstance(); // Shared instance
   private static User currentUser = null;
@@ -35,6 +37,10 @@ public class UserService {
       System.out.println("Logged out successfully.");
       currentUser = null;
     }
+  }
+
+  public void shortlist(User user, int propertyId) {
+    user.shortlist(propertyId);
   }
 
   public User getCurrentUser() { return currentUser; }

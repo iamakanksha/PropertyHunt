@@ -1,6 +1,7 @@
 package propertyhunt.services;
 
 import propertyhunt.models.Property;
+import propertyhunt.models.User;
 import propertyhunt.repositories.PropertyRepository;
 import java.util.*;
 
@@ -31,5 +32,17 @@ public class PropertyService {
     property.markSold();
     propertyRepository.update(property);
     System.out.println("Property marked as SOLD.");
+  }
+
+  public void getShortlist(User user) {
+    Set<Integer> shortlistedProperties = user.getShortlistedProperties();
+    if (shortlistedProperties.isEmpty()) {
+      System.out.println("No properties shortlisted!");
+    }
+
+    for (int propertyId: shortlistedProperties) {
+      Property property = propertyRepository.findById(propertyId);
+      System.out.println(property.toString());
+    }
   }
 }

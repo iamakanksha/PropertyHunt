@@ -32,6 +32,12 @@ public class Main {
         case "logout":
           platform.logout();
           break;
+        case "shortlist":
+          platform.shortListProperty(Integer.parseInt(parts[1]));
+          break;
+        case "viewshortlist":
+          platform.getShortlistedProperty();
+          break;
         case "exit":
           System.out.println("Exiting...");
           return;
